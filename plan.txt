@@ -1,0 +1,37 @@
+~~~~~~~~Main Menu~~~~~~~~
+Agents  Maps  Utilities  Roles
+
+~~~~~~~~Case Maps~~~~~~~~
+(Maps)  ->  (Pick map)  _Gimic_  -any>  Recommended_comp
+
+(Recommended_comp)  ->  Case Agents/Pick agent
+
+~~~~~~~~Case Agents~~~~~~~~
+(Agents)  ->  _Agent count_  Pick agent  -any>  Best_played_on  Plays_role  Utilities
+
+(Best_played_on)  ->  Case Maps/Pick map
+(Fits_role)  ->  Case Roles/Pick role
+(Utilities)  -> Case Utilities/Pick util
+
+~~~~~~~~Case Utilities~~~~~~~~
+(Utilities)  _Average agent util_  _Most used, least used util_  ->  Pick utility  -any>  Case Agents
+
+~~~~~~~~Case Roles~~~~~~~~
+(Roles)  ->  For every pick role | _Num of agents_ | _Avg util_ ->  _Description_ _Average util_  Plays_role
+
+(Plays_role)  ->  Phoenix, Sova, etc...  ->  Case Agents
+
+
+~~~~~~~~MYSQL Plan~~~~~~~~
+1. Sum(agents.agent_name)
+2. Join Agents, Recommended_comp and maps
+3. Join Agents, Roles and fits
+4. Join Agents, Utilities
+* Aggregates -> _Count_, AverageGroup, _CountGroup_
+
+* Basically, each page usually gives you results that are also buttons to continue, with potential to loop.
+* This is for patch 2.04, and as game is updated these stats will change, very flexible
+* New char -> add to agents, new map -> add to maps and add comp, meta change -> change comps
+
+Sources:
+https://www.reddit.com/r/VALORANT/comments/ftbunp/roles_of_valorant_composition_breakdown_and_agent/
