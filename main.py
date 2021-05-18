@@ -1,6 +1,11 @@
 import database_creator as db_bld  # Check this file to adjust database connection
 import mysql.connector
 
+# DB connection variables
+host = 'localhost',
+user = 'root',
+password = 'root'
+
 # Functions
 # Trivial
 def cap_first(word):  # Capitalizes first letter of a word and makes rest lower
@@ -189,9 +194,9 @@ def utilities_menu(utility_list):
 
 # Connection to database
 mydb = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='root'
+    host=host,
+    user=user,
+    password=password
 )
 crs = mydb.cursor(buffered=True)
 
